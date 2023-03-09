@@ -2,6 +2,7 @@ package org.example;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.HashMap;
 
 public class View extends JFrame{
     JFrame frame = new JFrame();
@@ -18,7 +19,7 @@ public class View extends JFrame{
         add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         v_model = model;
-        v_model.setValue(VModel.INITIAL_VALUE);
+
         v_total.setText(v_model.getValue());
         v_total.setEditable(false);
         JPanel content = new JPanel();
@@ -31,26 +32,34 @@ public class View extends JFrame{
         content.add(v_userInput);
         content.add(new JLabel("Al doilea polinom: "));
         content.add(v_userInput2);
-        content2.setLayout(new FlowLayout());
-        content2.add(addBtn);
-        content2.add(subBtn);
-        content2.add(new JLabel("Rezultat"));
-        content2.add(v_total);
-        content2.add(clearBtn);
+        content.setLayout(new FlowLayout());
+        content.add(addBtn);
+        content.add(subBtn);
+        content.add(new JLabel("Rezultat"));
+        content.add(v_total);
+        content.add(clearBtn);
         panel.add(content);
         panel.add(content2);
         this.setContentPane(panel);
         this.pack();
         this.setTitle("Calculator Polinoame");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
+
     void reset() {v_total.setText(VModel.INITIAL_VALUE);}
-    String getPrimulPolinom() {return v_userInput.getText();}
-    void setTotal(String Total){v_total.setText(Total);}
+    void setTotal(String Total){v_total.setText(Total);
+        System.out.println(Total);}
     void addAddListener(ActionListener A){addBtn.addActionListener(A);}
     void addSubListener(ActionListener S){subBtn.addActionListener(S);}
     void addClearListener(ActionListener cal) {
         clearBtn.addActionListener(cal);
     }
+    String getUserInput1() {
+        return v_userInput.getText();
+    }
+    String getUserInput2(){ return v_userInput2.getText();}
+    void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
 }

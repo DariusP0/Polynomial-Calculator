@@ -1,18 +1,45 @@
 package org.example;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VModel {
-    static final String INITIAL_VALUE = "-";
+    static String INITIAL_VALUE = "-";
     private String m_total;
-    VModel(){ reset(); }
-    public void reset(){
+
+    public HashMap<Integer, Integer> total;
+
+    VModel() {
+        reset();
+    }
+
+    public void reset() {
         m_total = new String(INITIAL_VALUE);
     }
-    public void setValue(String value) {
-        m_total = new String(value);
-    }
+
     public String getValue() {
-        return m_total;
+        return m_total.toString();
+    }
+
+    public void addTo(Polinoame p1, Polinoame p2) {
+        total = new HashMap(p1.add(p1, p2));
+        m_total = "";
+        for (Map.Entry<Integer, Integer> entry : total.entrySet()) {
+            int pow = entry.getKey();
+            int coef = entry.getValue();
+            if (pow > 0) {
+                if(pow==1){
+                    m_total += coef + "x";
+                }
+                else
+                    m_total += coef + "x^" + pow;
+            } else if (pow == 0) {
+                m_total += coef;
+            }
+
+
+        }
     }
 }
+

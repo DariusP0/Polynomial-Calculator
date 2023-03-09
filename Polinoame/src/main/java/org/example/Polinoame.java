@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Polinoame {
 
-
+    public String Rezultat;
     public int pow;
     public int coef;
     private String polinom;
@@ -16,13 +16,12 @@ public class Polinoame {
     public Polinoame(String polinom2) {
         this.polinom = polinom2;
         putereCoeficient = new HashMap<>();
-        Pattern p = Pattern.compile("(-?\\d+)[xX]\\^(-?\\d+)|[xX]\\^(-?\\d+)|(-?\\d+)[xX]|(-?\\d+)");
+        Pattern p = Pattern.compile("(-?\\d+)[xX]\\^(-?\\d+)|[xX]\\^(-?\\d+)|(-?\\d+)[xX]|(-?\\d+)|(-?)[xX]\\^(-?\\d+)");
         Matcher m = p.matcher(polinom);
         while (m.find()) {
 
             if (m.group(1) != null && !m.group(1).isEmpty()) {
                 coef = Integer.parseInt(m.group(1));
-
             }
 
             if (m.group(2) != null && !m.group(2).isEmpty()) {
@@ -42,17 +41,22 @@ public class Polinoame {
                 coef = Integer.parseInt(m.group(5));
                 pow = 0;
             }
+            if (m.group(6) != null && !m.group(6).isEmpty()) {
+                coef = -1;
+                pow = Integer.parseInt(m.group(7));
+            }
             putereCoeficient.put(pow, coef);
         }
     }
-
-
 
 
     public HashMap<Integer, Integer> getHash() {
         return putereCoeficient;
     }
 
+    public String getString() {
+        return polinom;
+    }
 
     public HashMap add(Polinoame p, Polinoame p2) {
         HashMap<Integer, Integer> result = new HashMap<Integer, Integer>(p.getHash());
@@ -67,7 +71,23 @@ public class Polinoame {
         }
         return result;
     }
+
+    public HashMap sub(Polinoame p, Polinoame p2) {
+        HashMap<Integer, Integer> result = new HashMap(p.getHash());
+        for (Map.Entry<Integer, Integer> term : p2.getHash().entrySet()) {
+            int power = term.getKey();
+            int coefficient = term.getValue();
+            if (result.containsKey(power)) {
+                result.put(power, result.get(power) - coefficient);
+            } else {
+                result.put(power, -coefficient);
+            }
+        }
+        return result;
+    }
 }
+
+
  /*   public int getDegree() {
         return degree;
     }
