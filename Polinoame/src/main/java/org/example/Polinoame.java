@@ -85,8 +85,20 @@ public class Polinoame {
         }
         return result;
     }
-}
 
+    public HashMap derivative(Polinoame p) {
+        HashMap<Integer, Integer> result = new HashMap();
+        for (Map.Entry<Integer, Integer> term : p.getHash().entrySet()) {
+            int power = term.getKey();
+            int coefficient = term.getValue();
+            if(power-1>=0) {
+                result.put(power - 1, coefficient * power);
+            }
+            }
+
+            return result;
+    }
+}
 
  /*   public int getDegree() {
         return degree;

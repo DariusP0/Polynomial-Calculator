@@ -8,23 +8,45 @@ public class VController {
         v_model = model;
         v_view = view;
         view.addAddListener(new AddListener());
-      /*  view.addSubListener(new SubListener());
-        view.addClearListener(new ClearListener());*/
+        view.addSubListener(new SubListener());
+        view.addClearListener(new ClearListener());
     }
 
     class AddListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
             try {
-               Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
+                Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
                 Polinoame polinom2 = new Polinoame(v_view.getUserInput2());
 
                 v_model.addTo(polinom1, polinom2);
                 v_view.setTotal(v_model.getValue());
 
             } catch (NumberFormatException nfex) {
-                v_view.showError("Bad input: '" +v_view.getUserInput1()+ "'");
+                v_view.showError("Bad input: '" + v_view.getUserInput1() + "'");
             }
         }
     }
-}
+
+        class SubListener implements ActionListener {
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
+                    Polinoame polinom2 = new Polinoame(v_view.getUserInput2());
+
+                    v_model.subTo(polinom1, polinom2);
+                    v_view.setTotal(v_model.getValue());
+
+                } catch (NumberFormatException nfex) {
+                    v_view.showError("Bad input: '" + v_view.getUserInput1() + "'");
+                }
+            }
+        }
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            v_model.reset();
+            v_view.reset();
+        }
+    }
+    }

@@ -29,16 +29,52 @@ public class VModel {
             int pow = entry.getKey();
             int coef = entry.getValue();
             if (pow > 0) {
-                if(pow==1){
-                    m_total += coef + "x";
+                if (pow == 1) {
+                    if(coef == 0){
+                        m_total += " ";
+                    }
+                    else {
+                        m_total += "+" + coef + "x";
+                    }
+                } else {
+                    if(coef == 0){
+                        m_total += " ";
+                    }
+                    else {
+                        m_total += "+" + coef + "x^" + pow;
+                    }
                 }
-                else
-                    m_total += coef + "x^" + pow;
             } else if (pow == 0) {
-                m_total += coef;
+                if(coef>0) {
+                    m_total += "+" + coef;
+                }
+                else{
+                    m_total += coef;
+                }
+
             }
 
 
+        }
+    }
+
+    public void subTo(Polinoame p1, Polinoame p2) {
+        total = new HashMap(p1.sub(p1, p2));
+        m_total = "";
+        for (Map.Entry<Integer, Integer> entry : total.entrySet()) {
+            int pow = entry.getKey();
+            int coef = entry.getValue();
+            if (pow > 0) {
+                if (pow == 1) {
+                    m_total += "+" + coef + "x" ;
+                } else
+                    m_total += "+" + coef + "x^" + pow;
+            } else if (pow == 0) {
+
+                    m_total += "+" + coef;
+
+
+            }
         }
     }
 }
