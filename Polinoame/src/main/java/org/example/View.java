@@ -11,6 +11,7 @@ public class View extends JFrame{
     private JTextField v_total = new JTextField(20);
     private JButton    addBtn = new JButton("Adunare");
     private JButton    subBtn    = new JButton("Scadere");
+    private JButton derBtn = new JButton("Derivare");
     private JButton clearBtn = new JButton("Clear");
     private VModel v_model;
     View(VModel model){
@@ -35,6 +36,7 @@ public class View extends JFrame{
         content.setLayout(new FlowLayout());
         content.add(addBtn);
         content.add(subBtn);
+        content.add(derBtn);
         content.add(new JLabel("Rezultat"));
         content.add(v_total);
         content.add(clearBtn);
@@ -51,6 +53,7 @@ public class View extends JFrame{
         System.out.println(Total);}
     void addAddListener(ActionListener A){addBtn.addActionListener(A);}
     void addSubListener(ActionListener S){subBtn.addActionListener(S);}
+    void addDerListener(ActionListener D){derBtn.addActionListener(D);}
     void addClearListener(ActionListener cal) {
         clearBtn.addActionListener(cal);
     }

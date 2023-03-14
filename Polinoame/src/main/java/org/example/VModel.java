@@ -1,6 +1,5 @@
 package org.example;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,61 +20,58 @@ public class VModel {
     public String getValue() {
         return m_total.toString();
     }
-
-    public void addTo(Polinoame p1, Polinoame p2) {
-        total = new HashMap(p1.add(p1, p2));
+    public String faString(HashMap<Integer,Integer> total) {
         m_total = "";
         for (Map.Entry<Integer, Integer> entry : total.entrySet()) {
             int pow = entry.getKey();
             int coef = entry.getValue();
-            if (pow > 0) {
+            if(coef!=0){if (pow > 0) {
                 if (pow == 1) {
-                    if(coef == 0){
-                        m_total += " ";
-                    }
-                    else {
-                        m_total += "+" + coef + "x";
-                    }
+                    if (!m_total.isEmpty()) {
+                        if (coef > 0)
+                            m_total += "+" + coef + "x";
+                        if (coef < 0)
+                            m_total += coef + "x";
+                    } else m_total += coef + "x";
                 } else {
-                    if(coef == 0){
-                        m_total += " ";
-                    }
-                    else {
-                        m_total += "+" + coef + "x^" + pow;
+                    if (!m_total.isEmpty()) {
+                        if (coef > 0)
+                            m_total += "+" + coef + "x^" + pow;
+                        else
+                            m_total += coef + "x^" + pow;
+                    } else {
+                        m_total += coef + "x^" + pow;
                     }
                 }
             } else if (pow == 0) {
-                if(coef>0) {
-                    m_total += "+" + coef;
-                }
-                else{
+                if (!m_total.isEmpty()) {
+                    if (coef > 0)
+                        m_total += "+" + coef;
+                    else {
+                        m_total += coef;
+                    }
+                } else {
                     m_total += coef;
                 }
 
             }
-
-
         }
+        }
+        return m_total;
     }
+    public HashMap<Integer, Integer>  addTo(Polinoame p1, Polinoame p2) {
+        total = new HashMap(p1.add(p1, p2));
+        return total;
+        }
 
-    public void subTo(Polinoame p1, Polinoame p2) {
+    public HashMap<Integer, Integer> subTo(Polinoame p1, Polinoame p2) {
         total = new HashMap(p1.sub(p1, p2));
-        m_total = "";
-        for (Map.Entry<Integer, Integer> entry : total.entrySet()) {
-            int pow = entry.getKey();
-            int coef = entry.getValue();
-            if (pow > 0) {
-                if (pow == 1) {
-                    m_total += "+" + coef + "x" ;
-                } else
-                    m_total += "+" + coef + "x^" + pow;
-            } else if (pow == 0) {
-
-                    m_total += "+" + coef;
-
-
-            }
-        }
+        return total;
     }
+        public HashMap<Integer, Integer> derTo(Polinoame p1) {
+            total = new HashMap(p1.derivative(p1));
+            return total;
+        }
+
 }
 
