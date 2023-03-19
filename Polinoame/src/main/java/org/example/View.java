@@ -12,6 +12,9 @@ public class View extends JFrame{
     private JButton    addBtn = new JButton("Adunare");
     private JButton    subBtn    = new JButton("Scadere");
     private JButton derBtn = new JButton("Derivare");
+
+    private JButton intBtn = new JButton("Integral");
+    private JButton mulBtn = new JButton("Inmultire");
     private JButton clearBtn = new JButton("Clear");
     private VModel v_model;
     View(VModel model){
@@ -20,7 +23,6 @@ public class View extends JFrame{
         add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         v_model = model;
-
         v_total.setText(v_model.getValue());
         v_total.setEditable(false);
         JPanel content = new JPanel();
@@ -37,6 +39,8 @@ public class View extends JFrame{
         content.add(addBtn);
         content.add(subBtn);
         content.add(derBtn);
+        content.add(intBtn);
+        content.add(mulBtn);
         content.add(new JLabel("Rezultat"));
         content.add(v_total);
         content.add(clearBtn);
@@ -54,6 +58,8 @@ public class View extends JFrame{
     void addAddListener(ActionListener A){addBtn.addActionListener(A);}
     void addSubListener(ActionListener S){subBtn.addActionListener(S);}
     void addDerListener(ActionListener D){derBtn.addActionListener(D);}
+    void addIntListener(ActionListener I){intBtn.addActionListener(I);}
+    void addMulListener(ActionListener M){mulBtn.addActionListener(M);}
     void addClearListener(ActionListener cal) {
         clearBtn.addActionListener(cal);
     }

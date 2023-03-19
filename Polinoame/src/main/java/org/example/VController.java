@@ -13,6 +13,8 @@ public class VController {
         view.addSubListener(new SubListener());
         view.addClearListener(new ClearListener());
         view.addDerListener(new DerListener());
+        view.addMulListener(new MulListener());
+        view.addIntListener(new IntListener());
     }
 
     class AddListener implements ActionListener {
@@ -64,6 +66,41 @@ public class VController {
                 Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
 
                 HashMap<Double,Double> h = new HashMap(v_model.derTo(polinom1));
+
+                v_model.faString(h);
+                v_view.setTotal(v_model.getValue());
+
+            } catch (NumberFormatException nfex) {
+                v_view.showError("Bad input: '" + v_view.getUserInput1() + "'");
+            }
+        }
+    }
+    class MulListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
+                Polinoame polinom2 = new Polinoame(v_view.getUserInput2());
+
+                HashMap<Double,Double> h = new HashMap(v_model.mulTo(polinom1, polinom2));
+                System.out.println(h);
+                v_model.faString(h);
+                v_view.setTotal(v_model.getValue());
+
+            } catch (NumberFormatException nfex) {
+                v_view.showError("Bad input: '" + v_view.getUserInput1() + "'");
+            }
+        }
+    }
+    class IntListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
+
+                HashMap<Double,Double> h = new HashMap(v_model.intTo(polinom1));
 
                 v_model.faString(h);
                 v_view.setTotal(v_model.getValue());

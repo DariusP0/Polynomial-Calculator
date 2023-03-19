@@ -68,10 +68,19 @@ public class VModel {
         total = new HashMap(p1.sub(p1, p2));
         return total;
     }
-        public HashMap<Double, Double> derTo(Polinoame p1) {
-            total = new HashMap(p1.derivative(p1));
-            return total;
-        }
+    public HashMap<Double, Double> derTo(Polinoame p1) {
+        total = new HashMap(p1.derivative(p1));
+        return total;
+    }
+    public HashMap<Double, Double>  intTo(Polinoame p1) {
+        total = new HashMap(p1.integral(p1));
+        return total;
+    }
+
+    public HashMap<Double, Double> mulTo(Polinoame p1, Polinoame p2) {
+        total = new HashMap(p1.multiply(p1, p2));
+        return total;
+    }
 
 }
 
