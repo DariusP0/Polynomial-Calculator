@@ -16,6 +16,7 @@ public class Main {
         System.out.println(p1.multiply(p1,p2));
         System.out.println(p3.derivative(p3));
         System.out.println(p3.getHash());
+        System.out.println(p3.multiply(p1,p2));
 //        System.out.println(p4.getHash());
 //        System.out.println(p3.sub(p3,p4));
     }
