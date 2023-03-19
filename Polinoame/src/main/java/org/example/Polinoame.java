@@ -98,6 +98,19 @@ public class Polinoame {
 
             return result;
     }
+
+    public HashMap integral(Polinoame p) {
+        HashMap<Double, Double> result = new HashMap();
+        for (Map.Entry<Double, Double> term : p.getHash().entrySet()) {
+            Double power = term.getKey();
+            Double coefficient = term.getValue();
+
+                result.put(power + 1, coefficient /(power+1));
+        }
+
+        return result;
+    }
+
     public HashMap multiply(Polinoame p, Polinoame p2) {
         HashMap<Double, Double> result = new HashMap<Double, Double>();
         for (Map.Entry<Double, Double> term : p.getHash().entrySet()) {
