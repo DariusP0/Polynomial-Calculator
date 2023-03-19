@@ -7,7 +7,7 @@ public class VModel {
     static String INITIAL_VALUE = "-";
     private String m_total;
 
-    public HashMap<Integer, Integer> total;
+    public HashMap<Double, Double> total;
 
     VModel() {
         reset();
@@ -20,11 +20,11 @@ public class VModel {
     public String getValue() {
         return m_total.toString();
     }
-    public String faString(HashMap<Integer,Integer> total) {
+    public String faString(HashMap<Double,Double> total) {
         m_total = "";
-        for (Map.Entry<Integer, Integer> entry : total.entrySet()) {
-            int pow = entry.getKey();
-            int coef = entry.getValue();
+        for (Map.Entry<Double, Double> entry : total.entrySet()) {
+            Double pow = entry.getKey();
+            Double coef = entry.getValue();
             if(coef!=0){if (pow > 0) {
                 if (pow == 1) {
                     if (!m_total.isEmpty()) {
@@ -59,16 +59,16 @@ public class VModel {
         }
         return m_total;
     }
-    public HashMap<Integer, Integer>  addTo(Polinoame p1, Polinoame p2) {
+    public HashMap<Double, Double>  addTo(Polinoame p1, Polinoame p2) {
         total = new HashMap(p1.add(p1, p2));
         return total;
         }
 
-    public HashMap<Integer, Integer> subTo(Polinoame p1, Polinoame p2) {
+    public HashMap<Double, Double> subTo(Polinoame p1, Polinoame p2) {
         total = new HashMap(p1.sub(p1, p2));
         return total;
     }
-        public HashMap<Integer, Integer> derTo(Polinoame p1) {
+        public HashMap<Double, Double> derTo(Polinoame p1) {
             total = new HashMap(p1.derivative(p1));
             return total;
         }

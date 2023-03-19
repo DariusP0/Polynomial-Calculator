@@ -22,7 +22,7 @@ public class VController {
                 Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
                 Polinoame polinom2 = new Polinoame(v_view.getUserInput2());
 
-                HashMap<Integer,Integer> h = new HashMap( v_model.addTo(polinom1, polinom2));
+                HashMap<Double,Double> h = new HashMap( v_model.addTo(polinom1, polinom2));
                 v_model.faString(h);
                 v_view.setTotal(v_model.getValue());
 
@@ -40,7 +40,7 @@ public class VController {
                     Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
                     Polinoame polinom2 = new Polinoame(v_view.getUserInput2());
 
-                    HashMap<Integer,Integer> h = new HashMap(v_model.subTo(polinom1, polinom2));
+                    HashMap<Double,Double> h = new HashMap(v_model.subTo(polinom1, polinom2));
                     System.out.println(h);
                     v_model.faString(h);
                     v_view.setTotal(v_model.getValue());
@@ -63,7 +63,7 @@ public class VController {
 
                 Polinoame polinom1 = new Polinoame(v_view.getUserInput1());
 
-                HashMap<Integer,Integer> h = new HashMap(v_model.derTo(polinom1));
+                HashMap<Double,Double> h = new HashMap(v_model.derTo(polinom1));
 
                 v_model.faString(h);
                 v_view.setTotal(v_model.getValue());
