@@ -31,7 +31,6 @@ public class Polinoame {
             if (m.group(3) != null && !m.group(3).isEmpty()) {
                 pow = Double.parseDouble(m.group(3));
                 coef = 1.0;
-                double cf = 1;
             }
 
             if (m.group(4) != null && !m.group(4).isEmpty()) {
