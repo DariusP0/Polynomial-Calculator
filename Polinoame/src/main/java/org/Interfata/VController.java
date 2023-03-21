@@ -1,4 +1,6 @@
-package org.example;
+package org.Interfata;
+import Polinom.Polinoame;
+
 import java.awt.event.*;
 import java.util.HashMap;
 

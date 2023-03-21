@@ -1,8 +1,7 @@
-package org.example;
+package org.Interfata;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.HashMap;
 
 public class View extends JFrame{
     JFrame frame = new JFrame();

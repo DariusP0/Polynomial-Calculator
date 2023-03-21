@@ -1,6 +1,6 @@
-package org.example;
+package org.Interfata;
 
-import java.sql.SQLOutput;
+import Polinom.Polinoame;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +17,6 @@ public class Main {
         System.out.println(p3.derivative(p3));
         System.out.println(p3.getHash());
         System.out.println(p3.multiply(p1,p2));
-//        System.out.println(p4.getHash());
-//        System.out.println(p3.sub(p3,p4));
+
     }
 }

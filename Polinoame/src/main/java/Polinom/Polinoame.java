@@ -1,4 +1,4 @@
-package org.example;
+package Polinom;
 
 import java.util.HashMap;
 import java.util.Map;
