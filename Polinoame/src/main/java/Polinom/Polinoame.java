@@ -21,31 +21,31 @@ public class Polinoame {
         while (m.find()) {
 
             if (m.group(1) != null && !m.group(1).isEmpty()) {
-                coef = Double.parseDouble(m.group(1));
+                coef = Double.parseDouble(m.group(1))/1.0;
             }
 
             if (m.group(2) != null && !m.group(2).isEmpty()) {
-                pow = Double.parseDouble(m.group(2));
+                pow = Double.parseDouble(m.group(2))/1.0;
             }
 
             if (m.group(3) != null && !m.group(3).isEmpty()) {
-                pow = Double.parseDouble(m.group(3));
+                pow = Double.parseDouble(m.group(3))/1.0;
                 coef = 1.0;
             }
 
             if (m.group(4) != null && !m.group(4).isEmpty()) {
-                coef = Double.parseDouble(m.group(4));
+                coef = Double.parseDouble(m.group(4))/1.0;
                 pow = 1.0;
             }
             if (m.group(5) != null && !m.group(5).isEmpty()) {
-                coef = Double.parseDouble(m.group(5));
+                coef = Double.parseDouble(m.group(5))/1.0;
                 pow = 0.0;
             }
             if (m.group(6) != null && !m.group(6).isEmpty()) {
                 coef = -1.0;
-                pow = Double.parseDouble(m.group(7));
+                pow = Double.parseDouble(m.group(7))/1.0;
             }
-            putereCoeficient.put(pow, coef);
+            putereCoeficient.put(pow, Math.round(coef * 100) / 100.0);
         }
     }
 
