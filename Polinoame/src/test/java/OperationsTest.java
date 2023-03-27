@@ -11,7 +11,7 @@ public class OperationsTest {
     @BeforeClass
     public static void setup() {
         p1 = new Polinoame("2x^2+3x+3");
-        p2 = new Polinoame("x^2+3");
+        p2 = new Polinoame("3x^2+3");
     }
     @Test
     public void addTest(){
@@ -33,7 +33,7 @@ public class OperationsTest {
     }
     @Test
     public void integralTest(){
-        Polinoame p3 = new Polinoame("0.33x^3+3x");
+        Polinoame p3 = new Polinoame("x^3+3x");
         HashMap<Double,Double> result = new HashMap(p2.integral(p2));
         System.out.println(result);
          result.put(3.0, Math.round(result.get(3.0) * 100) / 100.0);
