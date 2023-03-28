@@ -21,29 +21,29 @@ public class Polinoame {
         while (m.find()) {
 
             if (m.group(1) != null && !m.group(1).isEmpty()) {
-                coef = Double.parseDouble(m.group(1))/1.0;
+                coef = Double.parseDouble(m.group(1));
             }
 
             if (m.group(2) != null && !m.group(2).isEmpty()) {
-                pow = Double.parseDouble(m.group(2))/1.0;
+                pow = Double.parseDouble(m.group(2));
             }
 
             if (m.group(3) != null && !m.group(3).isEmpty()) {
-                pow = Double.parseDouble(m.group(3))/1.0;
+                pow = Double.parseDouble(m.group(3));
                 coef = 1.0;
             }
 
             if (m.group(4) != null && !m.group(4).isEmpty()) {
-                coef = Double.parseDouble(m.group(4))/1.0;
+                coef = Double.parseDouble(m.group(4));
                 pow = 1.0;
             }
             if (m.group(5) != null && !m.group(5).isEmpty()) {
-                coef = Double.parseDouble(m.group(5))/1.0;
+                coef = Double.parseDouble(m.group(5));
                 pow = 0.0;
             }
             if (m.group(6) != null && !m.group(6).isEmpty()) {
                 coef = -1.0;
-                pow = Double.parseDouble(m.group(7))/1.0;
+                pow = Double.parseDouble(m.group(7));
             }
             putereCoeficient.put(pow, Math.round(coef * 100) / 100.0);
         }
@@ -58,7 +58,7 @@ public class Polinoame {
         return polinom;
     }
 
-    public HashMap add(Polinoame p, Polinoame p2) {
+    public HashMap<Double, Double> add(Polinoame p, Polinoame p2) {
         HashMap<Double, Double> result = new HashMap<Double, Double>(p.getHash());
         for (Map.Entry<Double, Double> term : p2.getHash().entrySet()) {
             Double power = term.getKey();
@@ -72,7 +72,7 @@ public class Polinoame {
         return result;
     }
 
-    public HashMap sub(Polinoame p, Polinoame p2) {
+    public HashMap<Double, Double> sub(Polinoame p, Polinoame p2) {
         HashMap<Double, Double> result = new HashMap(p.getHash());
         for (Map.Entry<Double, Double> term : p2.getHash().entrySet()) {
             Double power = term.getKey();
@@ -86,7 +86,7 @@ public class Polinoame {
         return result;
     }
 
-    public HashMap derivative(Polinoame p) {
+    public HashMap<Double, Double> derivative(Polinoame p) {
         HashMap<Double, Double> result = new HashMap();
         for (Map.Entry<Double, Double> term : p.getHash().entrySet()) {
             Double power = term.getKey();
@@ -99,7 +99,7 @@ public class Polinoame {
             return result;
     }
 
-    public HashMap integral(Polinoame p) {
+    public HashMap<Double, Double> integral(Polinoame p) {
         HashMap<Double, Double> result = new HashMap();
         for (Map.Entry<Double, Double> term : p.getHash().entrySet()) {
             Double power = term.getKey();
@@ -111,7 +111,7 @@ public class Polinoame {
         return result;
     }
 
-    public HashMap multiply(Polinoame p, Polinoame p2) {
+    public HashMap<Double, Double> multiply(Polinoame p, Polinoame p2) {
         HashMap<Double, Double> result = new HashMap<Double, Double>();
         for (Map.Entry<Double, Double> term : p.getHash().entrySet()) {
             for (Map.Entry<Double, Double> term2 : p2.getHash().entrySet()) {
@@ -126,7 +126,7 @@ public class Polinoame {
         }
         return result;
     }
-    public HashMap divide(Polinoame p, Polinoame p2) {
+    public HashMap<Double, Double> divide(Polinoame p, Polinoame p2) {
         HashMap<Double, Double> result = new HashMap<>();
         HashMap<Double, Double> remainder = new HashMap<>(p.getHash());
 
