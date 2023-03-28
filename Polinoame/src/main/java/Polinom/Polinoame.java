@@ -126,5 +126,34 @@ public class Polinoame {
         }
         return result;
     }
+    public HashMap divide(Polinoame p, Polinoame p2) {
+        HashMap<Double, Double> result = new HashMap<>();
+        HashMap<Double, Double> remainder = new HashMap<>(p.getHash());
+
+        if (p2.getHash().isEmpty()) {
+            throw new ArithmeticException("Cannot divide by zero");
+        }
+
+        while (!remainder.isEmpty() && remainder.keySet().iterator().next() >= p2.getHash().keySet().iterator().next()) {
+            Double divPower = remainder.keySet().iterator().next() - p2.getHash().keySet().iterator().next();
+            Double divCoef = remainder.get(remainder.keySet().iterator().next()) / p2.getHash().get(p2.getHash().keySet().iterator().next());
+            result.put(divPower, divCoef);
+
+            for (Map.Entry<Double, Double> term : p2.getHash().entrySet()) {
+                Double power = term.getKey() + divPower;
+                Double coefficient = term.getValue() * divCoef;
+                if (remainder.containsKey(power)) {
+                    remainder.put(power, remainder.get(power) - coefficient);
+                } else {
+                    remainder.put(power, -coefficient);
+                }
+                    remainder.remove(power);
+            }
+
+        }
+
+        return result;
+    }
+
 }
    //Regex polinoame java//
